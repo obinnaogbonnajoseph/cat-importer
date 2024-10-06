@@ -18,8 +18,6 @@ class DocxImporter(ImportInterface):
 
         for para in doc.paragraphs:
             if para.text != "":
-                parse = para.text.split(',')
-                new_cat = Cat(parse[0], int(parse[1]), bool(parse[2]))
-                cats.append(new_cat)
+                cats.append(ImportInterface.parse_str(para.text))
 
         return cats
